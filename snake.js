@@ -24,7 +24,7 @@ function Snake() {
     this.death = function(){
         for(let i =0; i< this.tail.length; i++){
             let pos = this.tail[i];
-            let d = dist(this.x, this.y, pos(x), pos(y));
+            let d = dist(this.x, this.y, pos.x, pos.y);
             if(d<1){
                 this.total =0;
                 this.tail = [];
@@ -37,8 +37,11 @@ function Snake() {
         for(let i = 0; i< this.tail.length-1; i++){
             this.tail[i]= this.tail[i+1];
         }
-      }       
-      this.tail[this.total -1]= createVector(this.x, this.y);
+      }    
+      if (this.total >= 1) {
+        this.tail[this.total - 1] = createVector(this.x, this.y);
+      }   
+      
       
       this.x = this.x + this.xspeed * scl;
       this.y = this.y + this.yspeed * scl;
