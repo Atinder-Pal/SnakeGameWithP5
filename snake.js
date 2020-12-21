@@ -2,11 +2,14 @@ function Snake() {
     this.x = 0;
     this.y = 0;
     this.xspeed = 1;
-    this.yspeed = 0;     
+    this.yspeed = 0;   
+    this.total = 0;
+    this.tail =[];  
     
     this.eat = function(pos){
         let d = dist(this.x, this.y, pos.x, pos.y);
         if(d< 1){
+            total++;
             return true;
         } else {
             return false;
@@ -18,7 +21,12 @@ function Snake() {
       this.yspeed = y;
     };  
    
-    this.update = function() {     
+    this.update = function() {  
+      for(let i = 0; i< this.total-1; i++){
+          this.tail[i]= this.tail[i+1];
+      }
+      this.tail[total-1]= createVector(this.x, this,y);
+      
       this.x = this.x + this.xspeed * scl;
       this.y = this.y + this.yspeed * scl;
   
@@ -27,7 +35,11 @@ function Snake() {
     };
   
     this.show = function() {
-      fill(255);     
+      fill(255); 
+      for(let i = 0; i< this.total; i++) {
+        rect(this.tail[i].x, this.tail[i].y, scl, scl); 
+      }
+         
       rect(this.x, this.y, scl, scl);
     };
   }
