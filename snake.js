@@ -4,6 +4,15 @@ function Snake() {
     this.xspeed = 1;
     this.yspeed = 0;     
     
+    this.eat = function(pos){
+        let d = dist(this.x, this.y, pos.x, pos.y);
+        if(d< 1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     this.dir = function(x, y) {
       this.xspeed = x;
       this.yspeed = y;
