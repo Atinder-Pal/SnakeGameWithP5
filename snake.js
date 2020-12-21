@@ -9,7 +9,7 @@ function Snake() {
     this.eat = function(pos){
         let d = dist(this.x, this.y, pos.x, pos.y);
         if(d< 1){
-            total++;
+            this.total++;
             return true;
         } else {
             return false;
@@ -25,7 +25,7 @@ function Snake() {
       for(let i = 0; i< this.total-1; i++){
           this.tail[i]= this.tail[i+1];
       }
-      this.tail[total-1]= createVector(this.x, this,y);
+      this.tail[this.total -1]= createVector(this.x, this.y);
       
       this.x = this.x + this.xspeed * scl;
       this.y = this.y + this.yspeed * scl;
