@@ -21,6 +21,17 @@ function Snake() {
       this.yspeed = y;
     };  
    
+    this.death = function(){
+        for(let i =0; i< this.tail.length; i++){
+            let pos = this.tail[i];
+            let d = dist(this.x, this.y, pos(x), pos(y));
+            if(d<1){
+                this.total =0;
+                this.tail = [];
+            }
+        }
+    }
+
     this.update = function() {  
       if(this.total === this.tail.length){
         for(let i = 0; i< this.tail.length-1; i++){
