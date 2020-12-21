@@ -18,12 +18,13 @@ function pickLocation(){
 
 function draw() {
   background(51);
-  snake.update();
-  snake.show();
 
   if(snake.eat(food)){
     pickLocation();
   }
+  snake.death();
+  snake.update();
+  snake.show();  
 
   fill(255, 0 , 100);
   rect(food.x, food.y, scl, scl);
