@@ -19,8 +19,8 @@ class Snake{
     this.body.push(head);
   }
   eat(pos){
-    let headX = this.body[0].x;
-    let headY = this.body[0].y;
+    let headX = this.body[this.body.length-1].x;
+    let headY = this.body[this.body.length-1].y;
     if(pos.x == headX && pos.y == headY) 
       return true;
     else 
@@ -33,14 +33,14 @@ class Snake{
     head.x += this.xdir * this.res;
     head.y += this.ydir * this.res;  
     this.body.push(head);   
-    if(this.body[0].x  >= width + this.res){
-      this.body[0].x = 0;
-    }else if(this.body[0].y  >= height+ this.res){
-      this.body[0].y = 0;
-    } else if(this.body[0].x < 0){
-      this.body[0].x = width-this.res;
-    } else if(this.body[0].y  < 0){
-      this.body[0].y = height-this.res;
+    if(this.body[this.body.length-1].x  >= width + this.res){
+      this.body[this.body.length-1].x = 0;
+    }else if(this.body[this.body.length-1].y  >= height+ this.res){
+      this.body[this.body.length-1].y = 0;
+    } else if(this.body[this.body.length-1].x < 0){
+      this.body[this.body.length-1].x = width-this.res;
+    } else if(this.body[this.body.length-1].y  < 0){
+      this.body[this.body.length-1].y = height-this.res;
     }
   }
 
