@@ -18,11 +18,11 @@ function foodLocation(){
   food = createVector(x,y);
 }
 
-
 function draw(){ 
   background(220);
   if(snake.eat(food)){
     foodLocation();
+    snake.grow(food);
   }
     
   snake.update();

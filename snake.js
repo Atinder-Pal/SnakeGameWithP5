@@ -5,6 +5,7 @@ class Snake{
     this.xdir = 1;
     this.ydir = 0;
     this.res = 10;
+    this.len = 1;
   }
 
   setDir(x,y){
@@ -12,6 +13,11 @@ class Snake{
     this.ydir = y;
   }
 
+  grow(){
+    let head = this.body[this.body.length-1].copy();
+    this.len++;
+    this.body.push(head);
+  }
   eat(pos){
     let headX = this.body[0].x;
     let headY = this.body[0].y;
@@ -22,11 +28,14 @@ class Snake{
   }
 
   update(){ 
-    this.body[0].x += this.xdir * this.res;
-    this.body[0].y += this.ydir * this.res;     
-    if(this.body[0].x + this.res >= width){
+    let head = this.body[this.body.length-1].copy();
+    this.body.shift();
+    head.x += this.xdir * this.res;
+    head.y += this.ydir * this.res;  
+    this.body.push(head);   
+    if(this.body[0].x  >= width + this.res){
       this.body[0].x = 0;
-    }else if(this.body[0].y + this.res >= height){
+    }else if(this.body[0].y  >= height+ this.res){
       this.body[0].y = 0;
     } else if(this.body[0].x < 0){
       this.body[0].x = width-this.res;
@@ -37,6 +46,8 @@ class Snake{
 
   show(){
     fill(0);
-    rect(this.body[0].x, this.body[0].y, this.res, this.res);
+    for(let part of this.body){
+      rect(part.x, part.y, this.res, this.res);
+    }    
   }
 }
