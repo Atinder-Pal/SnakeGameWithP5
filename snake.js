@@ -12,6 +12,15 @@ class Snake{
     this.ydir = y;
   }
 
+  eat(pos){
+    let headX = this.body[0].x;
+    let headY = this.body[0].y;
+    if(pos.x == headX && pos.y == headY) 
+      return true;
+    else 
+      return false;
+  }
+
   update(){ 
     this.body[0].x += this.xdir * this.res;
     this.body[0].y += this.ydir * this.res;     

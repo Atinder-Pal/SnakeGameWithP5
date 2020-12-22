@@ -21,6 +21,10 @@ function foodLocation(){
 
 function draw(){ 
   background(220);
+  if(snake.eat(food)){
+    foodLocation();
+  }
+    
   snake.update();
   snake.show(); 
   
