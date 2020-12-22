@@ -18,6 +18,13 @@ function foodLocation(){
   food = createVector(x,y);
 }
 
+function restart()
+{  
+  snake = new Snake();
+  foodLocation();
+  this.hide();
+  loop();
+}
 function draw(){ 
   background(220);
   if(snake.eat(food)){
@@ -30,6 +37,11 @@ function draw(){
   if(snake.endGame()){
     background(255,0,0);
     noLoop();
+    textSize(35);
+    text('Game Over', (width/2) - 80, height/3);
+    button = createButton("Restart");
+    button.position((width/2)-80, height/2);
+    button.mousePressed(restart);
   }
 
   noStroke();
