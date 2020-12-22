@@ -22,12 +22,16 @@ function draw(){
   background(220);
   if(snake.eat(food)){
     foodLocation();
-    snake.grow(food);
+    snake.grow();
   }
     
   snake.update();
   snake.show(); 
-  
+  if(snake.endGame()){
+    background(255,0,0);
+    noLoop();
+  }
+
   noStroke();
   fill(255,0,0);
   rect(food.x,food.y,snake.res, snake.res);
