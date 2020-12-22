@@ -1,15 +1,32 @@
 let snake;
+let food;
+let cols;
+let rows;
+
 function setup(){
-  createCanvas(600,600);
+  createCanvas(600,600);  
   snake = new Snake();
+  cols = floor(width/snake.res);
+  rows = floor(height/snake.res);
   frameRate(10);
+  foodLocation();
 }
 
-function draw(){  
+function foodLocation(){
+  let x = floor(random(cols)) * snake.res;
+  let y = floor(random(rows)) * snake.res;
+  food = createVector(x,y);
+}
+
+
+function draw(){ 
   background(220);
   snake.update();
-  snake.show();
+  snake.show(); 
   
+  noStroke();
+  fill(255,0,0);
+  rect(food.x,food.y,snake.res, snake.res);
 }
 
 function keyPressed(){
@@ -23,7 +40,7 @@ function keyPressed(){
     case LEFT_ARROW:
       snake.setDir(-1,0);
       break;
-    case DOWN_ARROW:
+    case RIGHT_ARROW:
       snake.setDir(1,0);
       break;
   }
