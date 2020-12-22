@@ -9,8 +9,10 @@ class Snake{
   }
 
   setDir(x,y){
-    this.xdir = x;
-    this.ydir = y;
+    if((x !== 0 && this.xdir === 0) ||(y !== 0 && this.ydir === 0)){
+      this.xdir = x;
+      this.ydir = y;
+    } 
   }
 
   endGame(){
