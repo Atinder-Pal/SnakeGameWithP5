@@ -59,9 +59,16 @@ class Snake{
   }
 
   show(){
+    // fill(0);
+    // for(let part of this.body){
+    //   rect(part.x, part.y, this.res, this.res);
+    // }   
     fill(0);
-    for(let part of this.body){
-      rect(part.x, part.y, this.res, this.res);
-    }    
+    for(let i =0; i< this.body.length-1; i++){
+      rect(this.body[i].x, this.body[i].y, this.res, this.res);
+    }
+    let head = this.body[this.body.length -1];
+    fill('brown');
+    rect(head.x, head.y, this.res, this.res);
   }
 }
