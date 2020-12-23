@@ -22,6 +22,7 @@ function foodLocation(){
   let x = floor(random(cols)) * snake.res;
   let y = floor(random(rows)) * snake.res;
   food = createVector(x,y);  
+  console.log("foodLocation");
 }
 
 function foodColor(){
@@ -30,13 +31,23 @@ function foodColor(){
   b = random(255);
 }
 
-function restart()
-{  
-  snake = new Snake();  
+function restart(){  
+  snake = new Snake();         
   foodLocation();
   this.hide();
+  button1.hide();
   loop();
 }
+
+function nextLevel(){
+  snake = new Snake();  
+  frameRate(30);        
+  foodLocation();
+  this.hide();
+  button.hide();
+  loop();
+}
+
 function draw(){ 
   background(225);  
 
@@ -68,12 +79,17 @@ function draw(){
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
     button.mousePressed(restart);
+    button1 = createButton("Level 2");
+    button1.position((width/2), height/2);
+    button1.mousePressed(nextLevel);
   }
 
   noStroke(); 
   foodColor(); 
-  fill(r,g,b);
+  fill(r,g,b);  
+  console.log("foodcreationn");
   rect(food.x,food.y,snake.res, snake.res);
+  console.log(`r: ${r}, g:${g}, b${b}`);
 }
 
 function keyPressed(){

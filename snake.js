@@ -5,7 +5,11 @@ class Snake{
     this.xdir = 1;
     this.ydir = 0;
     this.res = 10;
-    this.len = 1;
+    this.len = 1;    
+  }
+
+  setSpeed(x){
+    this.speed = x;
   }
 
   setDir(x,y){
@@ -47,9 +51,9 @@ class Snake{
     head.x += this.xdir * this.res;
     head.y += this.ydir * this.res;  
     this.body.push(head);   
-    if(this.body[this.body.length-1].x + this.res  >= width ){
+    if(this.body[this.body.length-1].x + this.res  > width ){
       this.body[this.body.length-1].x = 0;
-    }else if(this.body[this.body.length-1].y + this.res >= height){
+    }else if(this.body[this.body.length-1].y + this.res > height){
       this.body[this.body.length-1].y = 0;
     } else if(this.body[this.body.length-1].x < 0){
       this.body[this.body.length-1].x = width-this.res;
