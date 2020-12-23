@@ -61,7 +61,7 @@ function draw(){
 
   textSize(20);  
   fill(255,0,0);
-  text("Score: " + `${snake.body.length -1}`, 10, 20);
+  text("Score: " + `${snake.body.length -1}`, 20, 20);
   if(snake.endGame()){
     
     let highestScore = localStorage.getItem('highestScore');
@@ -74,6 +74,7 @@ function draw(){
     }
 
     background(255,0,0);
+    fill('blue');
     noLoop();
     score = snake.len -1;
     textSize(35);
@@ -112,8 +113,8 @@ function keyPressed(){
       snake.setDir(1,0);
       break;    
   }
-  // if(key === ' '){
-  //   console.log("Space");
-  //   snake.grow();
-  // }
+  if(key === ' '){
+    console.log("Space");
+    snake.grow();
+  }
 }
