@@ -3,31 +3,43 @@ let food;
 let cols;
 let rows;
 let score;
+let r, g, b;
 
 function setup(){
-  createCanvas(600,600);  
+  createCanvas(600,600); 
+  
   snake = new Snake();
   cols = floor(width/snake.res);
   rows = floor(height/snake.res);
   frameRate(10);
   foodLocation();
+  r = random(255);
+  g = random(255);
+  b = random(255);
 }
 
 function foodLocation(){
   let x = floor(random(cols)) * snake.res;
   let y = floor(random(rows)) * snake.res;
-  food = createVector(x,y);
+  food = createVector(x,y);  
+}
+
+function foodColor(){
+  r = random(255);
+  g = random(255);
+  b = random(255);
 }
 
 function restart()
 {  
-  snake = new Snake();
+  snake = new Snake();  
   foodLocation();
   this.hide();
   loop();
 }
 function draw(){ 
-  background(220);
+  background(225);  
+
   if(snake.eat(food)){
     foodLocation();
     snake.grow();    
@@ -36,12 +48,7 @@ function draw(){
   snake.update();
   snake.show(); 
   if(snake.endGame()){
-    background(255,0,0);
-    noLoop();
-    score = snake.len -1;
-    textSize(35);
-    text('Game Over', (width/2)-120 , height/3);
-    text(`Score: ${score}`, (width/2)-120, (height/3)+80);
+    
     let highestScore = localStorage.getItem('highestScore');
     if(highestScore == null){
       localStorage.setItem('highestScore', score);
@@ -50,14 +57,22 @@ function draw(){
         localStorage.setItem('highestScore', score);
       }
     }
+
+    background(255,0,0);
+    noLoop();
+    score = snake.len -1;
+    textSize(35);
+    text('Game Over', (width/2)-120 , height/3);
+    text(`Score: ${score}`, (width/2)-120, (height/3)+80);
     text(`Highest Score: ${highestScore > score ? highestScore: score}`, width-320, 40);
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
     button.mousePressed(restart);
   }
 
-  noStroke();
-  fill(255,0,0);
+  noStroke(); 
+  foodColor(); 
+  fill(r,g,b);
   rect(food.x,food.y,snake.res, snake.res);
 }
 
