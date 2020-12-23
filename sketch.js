@@ -112,8 +112,8 @@ function keyPressed(){
       snake.setDir(1,0);
       break;    
   }
-  if(key === ' '){
-    console.log("Space");
-    snake.grow();
-  }
+  // if(key === ' '){
+  //   console.log("Space");
+  //   snake.grow();
+  // }
 }
