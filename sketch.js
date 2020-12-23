@@ -50,9 +50,7 @@ function nextLevel(){
 
 function draw(){ 
   background(225);
-  textSize(20);  
-  fill(255,0,0);
-  text("Score: " + `${snake.body.length -1}`, 10, 20);
+  
   if(snake.eat(food)){
     foodLocation();
     snake.grow();    
@@ -60,6 +58,10 @@ function draw(){
     
   snake.update();
   snake.show(); 
+
+  textSize(20);  
+  fill(255,0,0);
+  text("Score: " + `${snake.body.length -1}`, 10, 20);
   if(snake.endGame()){
     
     let highestScore = localStorage.getItem('highestScore');
