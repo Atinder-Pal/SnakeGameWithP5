@@ -113,6 +113,7 @@ function keyPressed(){
       snake.setDir(1,0);
       break;    
   }
+  //Comment out Line 117-120(if block), this is just added to make debugging easier
   if(key === ' '){
     console.log("Space");
     snake.grow();
