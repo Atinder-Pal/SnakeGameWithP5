@@ -73,8 +73,9 @@ function draw(){
     noLoop();
     score = snake.len -1;
     textSize(35);
-    text('Game Over', (width/2)-120 , height/3);
-    text(`Score: ${score}`, (width/2)-120, (height/3)+80);
+    textAlign('center');
+    text('Game Over', (width/2) , height/3);
+    text(`Score: ${score}`, (width/2), (height/3)+80);
     text(`Highest Score: ${highestScore > score ? highestScore: score}`, width-320, 40);
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
