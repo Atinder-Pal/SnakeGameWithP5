@@ -50,7 +50,7 @@ function draw(){
         localStorage.setItem('highestScore', score);
       }
     }
-    text(`Highest Score: ${highestScore}`, width-320, 40);
+    text(`Highest Score: ${highestScore > score ? highestScore: score}`, width-320, 40);
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
     button.mousePressed(restart);
