@@ -3,6 +3,7 @@ let food;
 let cols;
 let rows;
 
+
 function setup(){
   createCanvas(600,600);  
   snake = new Snake();
@@ -29,7 +30,7 @@ function draw(){
   background(220);
   if(snake.eat(food)){
     foodLocation();
-    snake.grow();
+    snake.grow();    
   }
     
   snake.update();
@@ -38,7 +39,8 @@ function draw(){
     background(255,0,0);
     noLoop();
     textSize(35);
-    text('Game Over', (width/2) - 80, height/3);
+    text('Game Over', (width/2)-120 , height/3);
+    text(`Score: ${(snake.len)-1}`, (width/2)-120, (height/3)+80);
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
     button.mousePressed(restart);
