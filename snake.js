@@ -47,9 +47,9 @@ class Snake{
     head.x += this.xdir * this.res;
     head.y += this.ydir * this.res;  
     this.body.push(head);   
-    if(this.body[this.body.length-1].x  >= width + this.res){
+    if(this.body[this.body.length-1].x + this.res  >= width ){
       this.body[this.body.length-1].x = 0;
-    }else if(this.body[this.body.length-1].y  >= height+ this.res){
+    }else if(this.body[this.body.length-1].y + this.res >= height){
       this.body[this.body.length-1].y = 0;
     } else if(this.body[this.body.length-1].x < 0){
       this.body[this.body.length-1].x = width-this.res;
