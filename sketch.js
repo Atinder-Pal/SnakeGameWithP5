@@ -2,7 +2,7 @@ let snake;
 let food;
 let cols;
 let rows;
-
+let score;
 
 function setup(){
   createCanvas(600,600);  
@@ -38,9 +38,19 @@ function draw(){
   if(snake.endGame()){
     background(255,0,0);
     noLoop();
+    score = snake.len -1;
     textSize(35);
     text('Game Over', (width/2)-120 , height/3);
-    text(`Score: ${(snake.len)-1}`, (width/2)-120, (height/3)+80);
+    text(`Score: ${score}`, (width/2)-120, (height/3)+80);
+    let highestScore = localStorage.getItem('highestScore');
+    if(highestScore == null){
+      localStorage.setItem('highestScore', score);
+    }else{
+      if(highestScore < score){
+        localStorage.setItem('highestScore', score);
+      }
+    }
+    text(`Highest Score: ${highestScore}`, width-320, 40);
     button = createButton("Restart");
     button.position((width/2)-80, height/2);
     button.mousePressed(restart);
@@ -64,6 +74,10 @@ function keyPressed(){
       break;
     case RIGHT_ARROW:
       snake.setDir(1,0);
-      break;
+      break;    
+  }
+  if(key === ' '){
+    console.log("Space");
+    snake.grow();
   }
 }
